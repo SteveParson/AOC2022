@@ -10,18 +10,13 @@ def fully_contained(lines):
         s1_end = int(lines[i].split('-')[1].split(',')[0])+1
         s2_start = int(lines[i].split(',')[1].split('-')[0])
         s2_end = int(lines[i].split(',')[1].split('-')[1])+1
+
         s1 = set(range(s1_start, s1_end))
         s2 = set(range(s2_start, s2_end))
 
-        overlap = False
-        for l in s1:
-            if l in s2:
-                overlap = True
-                break
-
-        if overlap:
+        if not s1.isdisjoint(s2):
             count += 1
-            
+
     return count
 
 
